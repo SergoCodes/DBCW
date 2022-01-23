@@ -1,0 +1,115 @@
+.menu {
+  height: 100px;
+  text-align: center;
+  margin-bottom: 30px;
+
+  &_title {
+    font-size: 30px;
+    background: #ff797a;
+    width: 300px;
+    margin:0 auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  &_block {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+  }
+}
+
+.card {
+  flex-basis: 18%;
+  padding: 20px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(gray, 0.05);
+  margin-bottom: 10px;
+
+  img {
+    max-width: 80%;
+    margin-bottom: 40px;
+    border-radius: 5px;
+  }
+
+  &:hover {
+    background: rgba(#ff797a, 0.2);
+  }
+}
+
+.order {
+  width: 1100px;
+  margin: 0 auto;
+  min-height: 150px;
+
+
+  .mini-cards {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+}
+
+.mini-card {
+  flex-basis: 18%;
+  margin: 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background: rgba(gray, 0.05);
+  width: 30%;
+  cursor: pointer;
+
+  .wrapper {
+    flex-grow: 1;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+}
+.order_buttons {
+  width: 1200px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 100px;
+}
+
+.order_buttons button {
+  width: 25%;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 25px;
+  color: white;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.order-button {
+  background: mediumseagreen;
+}
+
+.cancel-button {
+  background: darkred;
+}
+
+.cost {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
