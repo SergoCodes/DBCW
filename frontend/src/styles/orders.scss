@@ -1,0 +1,26 @@
+.orders-list {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.orders-list-title {
+  margin-bottom: 20px;
+}
+
+.order-item {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+.item-status {
+  color: #ff797a;
+  font-weight: 700;
+}

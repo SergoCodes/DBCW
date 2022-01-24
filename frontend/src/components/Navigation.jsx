@@ -12,9 +12,6 @@ const Navigation = () => {
         <Link to="/orders">
           <img className='header_image' src={require('../images/cook.png')} alt=""/>
         </Link>
-        <Link to="/checks">
-          <img className='header_image' src={require('../images/check.png')} alt=""/>
-        </Link>
       </div>
     </header>
   );

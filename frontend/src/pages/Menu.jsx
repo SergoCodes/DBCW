@@ -3,22 +3,23 @@ import '../styles/menu.scss'
 import MenuCard from '../components/MenuCard'
 import MiniCard from '../components/MiniCard'
 import MyButton from '../components/UI/MyButton'
+import {logDOM} from '@testing-library/react'
 const Menu = () => {
   
   const [order, setOrder] = useState([])
   const [cost, setCost] = useState(0)
   
   const cards = [
-    {id: Date.now(), title: 'Borsch', cost: 1000, source: 'images/borsch.jpg'},
-    {id: Date.now(), title: 'Plov', cost: 3000, source: 'images/plov.jpg'},
-    {id: Date.now(), title: 'Salad', cost: 500, source: 'images/salad.jpg'},
-    {id: Date.now(), title: 'Kaif', cost: 1000, source: 'images/1.jpg'},
-    {id: Date.now(), title: 'Martini', cost: 1000, source: 'images/2.jpg'},
-    {id: Date.now(), title: 'Juice', cost: 500, source: 'images/3.jpg'},
-    {id: Date.now(), title: 'Tiramisu', cost: 2000, source: 'images/4.jpg'},
-    {id: Date.now(), title: 'Napoleon', cost: 1500, source: 'images/5.jpg'},
-    {id: Date.now(), title: '32324', cost: 1500, source: 'images/5.jpg'},
-    {id: Date.now(), title: '324322', cost: 1500, source: 'images/2.jpg'},
+    {id: Date.now(), title: 'borsch', cost: 1000, source: 'images/borsch.jpg'},
+    {id: Date.now(), title: 'plov', cost: 3000, source: 'images/plov.jpg'},
+    {id: Date.now(), title: 'salad', cost: 500, source: 'images/salad.jpg'},
+    {id: Date.now(), title: 'cola', cost: 1000, source: 'images/1.jpg'},
+    {id: Date.now(), title: 'martini', cost: 1000, source: 'images/2.jpg'},
+    {id: Date.now(), title: 'juice', cost: 500, source: 'images/3.jpg'},
+    {id: Date.now(), title: 'tiramisu', cost: 2000, source: 'images/4.jpg'},
+    {id: Date.now(), title: 'napoleon', cost: 1500, source: 'images/5.jpg'},
+    {id: Date.now(), title: 'cake', cost: 1500, source: 'images/cake.jpg'},
+    {id: Date.now(), title: 'pie', cost: 1500, source: 'images/pie.jpg'},
   ]
   function addToOrder(card) {
     setOrder([...order, card])
@@ -40,6 +41,24 @@ const Menu = () => {
   function removeOrders() {
     setOrder([])
     setCost(0)
+  }
+  
+  function sendRequest() {
+    if (!order.length) return
+    let data = {
+      current_status: 'preparing',
+      cost: cost,
+      client_id: 1,
+      waiter_id: randomBetween(1,3),
+      cook_id: randomBetween(1,3)
+    }
+    fetch('http://localhost:8080/orders/add', {
+      method: 'POST',
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(data)
+    })
+      .then(() => console.log('Order is sent'))
+    removeOrders()
   }
   
   return (
@@ -77,11 +96,15 @@ const Menu = () => {
       </div>
       <div className="order_buttons">
         <div className="cost">Total cost: {cost}</div>
-        <MyButton onClick={() => removeOrders()} className="cancel-button">Cancel order</MyButton>
-        <MyButton className="order-button">Make order</MyButton>
+        <MyButton onClick={removeOrders} className="cancel-button">Cancel order</MyButton>
+        <MyButton onClick={sendRequest} className="order-button">Make order</MyButton>
       </div>
     </div>
   );
 };
 
 export default Menu;
+
+function randomBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
